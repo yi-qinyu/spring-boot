@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到秦羽页面</title>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/wangEditor.min.js"></script>
+</head>
+<body>
+    <div id="editor">
+    </div>
+</body>
+<script>
+  function submit() {
+      var name = $("#name").val();
+      var age = $("#age").val();
+      var address = $("#address").val();
+      var data = {'name': name, 'age': age, 'address': address, 'token': window.localStorage.getItem("token")}
+      var url = "http://" + window.location.host + "/addCustomer";
+      $.ajax({
+          url: url,
+          type: "POST",
+          data: data,
+          success: function (data) {
+              if (data == true) {
+                  alert("token身份验证成功");
+              } else {
+                  alert("token验证失败")
+              }
+          }
+      });
+  }
+</script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.create()
+</script>
+</html>

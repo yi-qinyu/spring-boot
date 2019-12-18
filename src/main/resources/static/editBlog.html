@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博文撰写</title>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/wangEditor.min.js"></script>
+    <script src="/js/bootstrap-select.min.js"></script>
+    <script src="/js/bootstrap-switch.min.js"></script>
+    <script src="/js/JsUtil.js"></script>
+    <script src="/js/addBlog.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrp-select.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-switch.min.css">
+</head>
+<body>
+    <div class="add-container">
+        <div class="input-group">
+            <span class="input-group-addon">标题</span>
+            <input id="bwbt" type="text" class="form-control" placeholder="请输入博文标题">
+        </div>
+        <div id="editor" style="margin-top: 10px;" aria-placeholder="请输入博文内容"></div>
+        <br>
+        文章标签： <div id="blogLabel" style="display: inline"></div>
+                 <div id="labelin" style="display: inline;">
+                     <input id="labeltext" onblur="addAction()" type="text" placeholder="在此输入标签内容">
+                 </div>
+                 <button id="addwzbq" onclick="addBq()" class="btn btn-primary">添加标签</button>
+                 <span style="color: red;font-size: 4px;">*最多10个标签</span>
+        <br><br>
+        文章分类： <select id="wzfl" class="selectpicker" title="请选择分类" data-style="btn-default" data-live-search="false"></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br><br>
+        博文分类： <select id="bwfl" class="selectpicker" title="请选择分类" data-style="btn-default" data-live-search="false"></select>
+        <br><br>
+        私密文章： <input id="sfsm" type="checkbox" data-size="small">
+
+        <br>
+
+        <div class="add-btn">
+            <button id="pubBlog" onclick="saveBlog()" type="button" class="btn btn-primary">发布博文</button>
+            <button id="cacheBlog" onclick="cacheBlog()" type="button" class="btn btn-default" style="margin-left: 20px;">暂存博文</button>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $("#labelin").hide();
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.create();
+</script>
+</html>
